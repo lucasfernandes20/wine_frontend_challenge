@@ -1,22 +1,27 @@
 import React from 'react'
 import Head from 'next/head'
-
-import RocketseatLogo from '../assets/rocketseat.svg'
-
 import { Container } from '../styles/pages/Home'
+import Header from '../components/Header'
+import WineList from '../components/WineList'
+import { GetStaticProps } from 'next'
 
 const Home: React.FC = () => {
   return (
     <Container>
       <Head>
-        <title>Homepage</title>
+        <title>Wine</title>
       </Head>
-
-      <RocketseatLogo />
-      <h1>ReactJS Structure</h1>
-      <p>A ReactJS + Next.js structure made by Rocketseat.</p>
+      <Header />
+      <WineList />
     </Container>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch('https://...')
+  const data = await res.json()
+
+  return { props: { data } }
 }
 
 export default Home
