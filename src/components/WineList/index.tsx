@@ -1,19 +1,19 @@
 import React from 'react'
-import { WinesState } from '../../Redux/ducks/Wines/types'
-import { useSelector } from 'react-redux'
+import { Wines } from '../../Redux/ducks/Wines/types'
 import WineCard from '../WineCard'
 import { ListContainer, List } from './styles'
 
 export interface ApplicationState {
-  wines: WinesState
+  wines: Wines[]
 }
 
-const WineList: React.FC = () => {
-  const wines = useSelector((state: ApplicationState) => state.wines.data)
+const WineList = ({ wines }: { wines: Wines[] }): JSX.Element => {
   return (
     <ListContainer>
       <h1>lista</h1>
-      <List>{wines && wines.map(e => <WineCard key={e.id} wine={e} />)}</List>
+      <List>
+        {wines && wines.map(wine => <WineCard key={wine.id} wine={wine} />)}
+      </List>
     </ListContainer>
   )
 }
