@@ -1,10 +1,24 @@
 import React from 'react'
-import { SideBarContainer } from './styles'
+import { SideBarContainer, UserContainer, Nav } from './styles'
+import { CgClose } from 'react-icons/cg'
 
-const SideBar: React.FC = () => {
+interface SideBarProps {
+  open: boolean
+  closeSideBar: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const SideBar: React.FC<SideBarProps> = ({ open, closeSideBar }) => {
   return (
-    <SideBarContainer>
-      <h1>Sidebar</h1>
+    <SideBarContainer open={open}>
+      <CgClose size="30px" onClick={() => closeSideBar(false)} />
+      <UserContainer>
+        <p>user</p>
+      </UserContainer>
+      <Nav>
+        <ul>
+          <li>Home</li>
+        </ul>
+      </Nav>
     </SideBarContainer>
   )
 }

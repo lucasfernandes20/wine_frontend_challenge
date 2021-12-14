@@ -23,7 +23,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
   )
 }
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get('https://wine-back-test.herokuapp.com/products')
+  const res = await axios.get(
+    'https://wine-back-test.herokuapp.com/products?page=1&limit=10'
+  )
   return { props: { data: res.data.items } }
 }
 
