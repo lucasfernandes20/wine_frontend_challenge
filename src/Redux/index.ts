@@ -1,11 +1,15 @@
-import { createStore, Store } from 'redux'
-import { RepositoriesState } from './ducks/repositories/types'
+import { createStore, Store, applyMiddleware } from 'redux'
+import { WinesState } from './ducks/Wines/types'
 import rootReducer from './ducks/rootReducer'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 export interface ApplicationState {
-  repositories: RepositoriesState
+  wines: WinesState
 }
 
-const store: Store<ApplicationState> = createStore(rootReducer)
+const store: Store<ApplicationState> = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware())
+)
 
 export default store

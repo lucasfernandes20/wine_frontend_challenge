@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import repositories from './repositories'
+import wines from './Wines'
 
-export default combineReducers({ repositories })
+export default combineReducers({ wines })
