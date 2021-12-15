@@ -8,7 +8,6 @@ const useInfiniteScroll = (wines: Wines[]): Wines[] => {
 
   useEffect(() => {
     const getWines = async () => {
-      console.log('pages', usePages)
       if (usePages === 1) {
         return setWines(previewsState => previewsState)
       }

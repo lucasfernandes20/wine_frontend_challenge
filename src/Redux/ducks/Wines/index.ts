@@ -2,24 +2,21 @@ import { Reducer } from 'redux'
 import { WinesState, ActionTypes } from './types'
 
 const INITIAL_STATE: WinesState = {
-  data: [],
-  error: false,
-  loading: false
+  wineBox: []
 }
 
 const reducer: Reducer<WinesState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ActionTypes.LOAD_REQUEST:
-      return { ...state, loading: true }
-    case ActionTypes.LOAD_SUCESS:
+    case ActionTypes.GET_WINE:
       return {
         ...state,
-        loading: false,
-        error: false,
-        data: action.payload
+        wineBox: [...state.wineBox, action.payload]
       }
-    case ActionTypes.LOAD_FAILURE:
-      return { ...state, loading: false, error: true, data: [] }
+    case ActionTypes.ADD_WINE:
+      return {
+        ...state,
+        wineBox: action.payload
+      }
     default:
       return state
   }

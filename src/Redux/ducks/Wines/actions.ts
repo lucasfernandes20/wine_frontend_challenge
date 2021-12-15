@@ -1,14 +1,18 @@
 import { action } from 'typesafe-actions'
 import { Wines, ActionTypes } from './types'
 
-export interface Load {
+export interface getWineBox {
   type: ActionTypes
-  payload?: Wines[]
+  payload: Wines
 }
 
-export const loadRequest = (): Load => action(ActionTypes.LOAD_REQUEST)
+export interface addWineBox {
+  type: ActionTypes
+  payload: Wines[]
+}
 
-export const loadSucess = (data: Wines[]): Load =>
-  action(ActionTypes.LOAD_SUCESS, data)
+export const getWineBoxAction = (data: Wines): getWineBox =>
+  action(ActionTypes.GET_WINE, data)
 
-export const loadFailure = (): Load => action(ActionTypes.LOAD_FAILURE)
+export const AddMoreOneAction = (data: Wines[]): addWineBox =>
+  action(ActionTypes.ADD_WINE, data)

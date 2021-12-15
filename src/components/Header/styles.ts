@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+interface SearchBarProps {
+  searchBar: boolean
+}
+
+export const HeaderContainer = styled.header<SearchBarProps>`
   width: 100vw;
   height: 70px;
   padding: 0 5vw;
@@ -8,6 +12,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: ${props => (props.searchBar ? '70px' : '20px')};
 `
 
 export const Logo = styled.img`

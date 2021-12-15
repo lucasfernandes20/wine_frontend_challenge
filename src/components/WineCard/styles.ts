@@ -1,19 +1,23 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  background-color: #ffff;
-  width: 45vw;
-  height: 50vh;
-  box-shadow: 0px 1px 3px lightgray;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: inherit;
+    background-color: #ffff;
+    width: 45vw;
+    height: 50vh;
+    box-shadow: 0px 1px 3px lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
 `
 
 export const Preview = styled.img`
-  width: 60%;
+  width: 70%;
 `
 
 export const WineName = styled.h3`

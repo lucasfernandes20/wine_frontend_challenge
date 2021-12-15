@@ -1,9 +1,8 @@
 // ACTION TYPES
 
 export enum ActionTypes {
-  LOAD_REQUEST = '@repositories/LOAD_REQUEST',
-  LOAD_SUCESS = '@repositories/LOAD_SUCESS',
-  LOAD_FAILURE = '@repositories/LOAD_FAILURE'
+  GET_WINE = '@wines/GET_WINE',
+  ADD_WINE = '@wines/ADD_WINE'
 }
 
 // DATA TYPES
@@ -25,12 +24,12 @@ export interface Wines {
   size: string
   sommelierComment: string
   type: string
+  quantity?: number
+  wineBoxPrice?: number
 }
 
 // STATE TYPES
 
 export interface WinesState {
-  readonly data: Wines[]
-  readonly loading: boolean
-  readonly error: boolean
+  readonly wineBox: Wines[]
 }
