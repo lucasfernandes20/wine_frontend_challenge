@@ -5,6 +5,10 @@ interface CloseIcon {
   active: string
 }
 
+interface FilterBlock {
+  filterOpen: boolean
+}
+
 export const CloseIcon = styled(AiOutlineCloseCircle)<CloseIcon>`
   width: 30px;
   color: ${props => (props.active === 'true' ? '#555' : 'lightgray')};
@@ -20,15 +24,23 @@ export const RemoveFilterContainer = styled.div<CloseIcon>`
   }
 `
 
-export const FilterContainer = styled.section`
-  display: none;
+export const FilterContainer = styled.section<FilterBlock>`
+  width: 100vw;
+  height: ${props => (props.filterOpen ? '300px' : '0px')};
+  opacity: ${props => (props.filterOpen ? '1' : '0')};
+  transition: ease-in 300ms;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   @media (min-width: 768px) {
+    opacity: 1;
     display: flex;
     flex-direction: column;
     gap: 50px;
     width: 40%;
     height: 600px;
-    border-radius: 6px;
     margin-top: 30px;
     padding: 10px;
     h1 {
@@ -37,6 +49,19 @@ export const FilterContainer = styled.section`
   }
   @media (min-width: 1210px) {
     width: 25%;
+  }
+`
+
+export const FilterBtn = styled.button`
+  display: block;
+  width: 30%;
+  color: white;
+  background-color: #c81b79;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  @media (min-width: 768px) {
+    display: none;
   }
 `
 

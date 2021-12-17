@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 import { Wines } from '../../Redux/ducks/Wines/types'
 import WineCard from '../WineCard'
@@ -10,16 +10,21 @@ import {
   FilterContainer,
   RadioInputContainer,
   CloseIcon,
-  RemoveFilterContainer
+  RemoveFilterContainer,
+  FilterBtn
 } from './styles'
 
 const WineList = ({ wines }: { wines: Wines[] }): JSX.Element => {
+  const [filterOpen, setFilterOpen] = useState(false)
   const { currentWines, winesEnd, setPriceFilter, resetPage } =
     useInfiniteScroll(wines)
 
   return (
     <ListContainer>
-      <FilterContainer>
+      <FilterBtn type="button" onClick={() => setFilterOpen(!filterOpen)}>
+        Filtrar por preço
+      </FilterBtn>
+      <FilterContainer filterOpen={filterOpen}>
         <h1>Refine sua busca</h1>
         <RadioInputContainer>
           <h4>Por Preço</h4>
