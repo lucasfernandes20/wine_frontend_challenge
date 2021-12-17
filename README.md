@@ -23,12 +23,14 @@ Usuarios poderão:
 - Adicionar vinhos em quantidades diferentes ao carrinho de compras
 - Visualizar detalhes do vinho
 - Filtrar vinhos por nome
+
 - Filtrar vinhos por preço
 
 ### Screenshot
 
-![Wine-Desktop]()
-![Wine-mobile]()
+![desktop_wine](https://user-images.githubusercontent.com/82236429/146604648-758d336f-9047-4788-ac25-523c16768f11.png)
+![Screenshot 2021-12-17 at 17-33-47 https wine-challenger-ft herokuapp com](https://user-images.githubusercontent.com/82236429/146604694-bb642f3b-b5fd-4ec2-892e-0d80e47fd4b6.png)
+![Screenshot 2021-12-17 at 17-32-58 Wine](https://user-images.githubusercontent.com/82236429/146604719-bd981ea7-7e1d-42ac-96ee-3b0ef5da3cf4.png)
 
 ### Links
 
