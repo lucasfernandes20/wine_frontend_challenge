@@ -22,11 +22,12 @@ const Home: React.FC<HomeProps> = ({ data }) => {
     </Container>
   )
 }
+
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(
     'https://wine-back-test.herokuapp.com/products?page=1&limit=10'
   )
-  return { props: { data: res.data.items } }
+  return { props: { data: res.data.items }, revalidate: 10 }
 }
 
 export default Home

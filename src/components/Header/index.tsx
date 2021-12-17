@@ -14,10 +14,12 @@ import SideBar from '../SideBar'
 import SearchBar from '../SearchBar'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import WineCart from '../WineCart'
 
 const Header: React.FC = () => {
   const [useSideBar, setSideBar] = useState(false)
   const [useSearchBar, setSearchBar] = useState(false)
+  const [useSideCart, setSideCart] = useState(false)
   const { pathname } = useRouter()
   return (
     <HeaderContainer searchBar={useSearchBar}>
@@ -63,12 +65,16 @@ const Header: React.FC = () => {
         <SearchIcon onClick={() => setSearchBar(!useSearchBar)} />
         {useSearchBar && <SearchBar />}
         <UserContent>
-          <Link href="/ShoppingCart">
-            <a>
-              <UserImg src="https://img.wine.com.br/fenix/image/_big_bang/icons/header-sprite.svg" />
-            </a>
-          </Link>
+          <UserImg
+            src="https://img.wine.com.br/fenix/image/_big_bang/icons/header-sprite.svg"
+            onClick={() => setSideCart(true)}
+          />
         </UserContent>
+        <WineCart
+          HeaderCart={true}
+          closeCart={setSideCart}
+          isOpen={useSideCart}
+        />
       </Div>
     </HeaderContainer>
   )

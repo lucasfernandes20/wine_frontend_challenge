@@ -9,19 +9,29 @@ import {
   BuyBtn,
   CartInfo,
   TotalItens,
-  ClearBtn
+  ClearBtn,
+  CloseBtn
 } from './styles'
 
-const WineCart: React.FC = () => {
+const WineCart = ({
+  HeaderCart,
+  closeCart,
+  isOpen
+}: {
+  HeaderCart: boolean
+  closeCart?: (arg: boolean) => void
+  isOpen?: boolean
+}): JSX.Element => {
   const { wineBox, removeWineBox } = useWineBox()
 
   return (
-    <WineCartContainer>
+    <WineCartContainer HeaderCart={HeaderCart} isOpen={isOpen}>
+      <CloseBtn onClick={() => closeCart(false)} HeaderCart={HeaderCart} />
       <CartInfo>
         <TotalItens>
           Total de itens: <span>{wineBox.length}</span>
         </TotalItens>
-        <ClearBtn type="button" onClick={() => removeWineBox(false)}>
+        <ClearBtn type="button" onClick={() => removeWineBox(-10)}>
           Limpar Carrinho
         </ClearBtn>
       </CartInfo>

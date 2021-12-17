@@ -1,20 +1,29 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { wines } from '../Redux/ducks/Wines'
+
 import {
   getWineBoxAction,
   AddMoreOneAction
 } from '../Redux/ducks/Wines/actions'
 import { WinesState, Wines } from '../Redux/ducks/Wines/types'
 
-export interface ApplicationState {
+export interface SelectorState {
   wines: WinesState
 }
 
-const useWineBox = () => {
+interface ApplicationState {
+  addWineToState: (arg: Wines) => void
+  changeQuantity: (arg1: number, arg2: Wines) => void
+  removeWineBox: (arg: number) => void
+  AddToCartWithQuantity: (arg: Wines, arg2: boolean) => void
+  quantity: number
+  wineBox: Wines[]
+}
+
+const useWineBox = (): ApplicationState => {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
-  const wineBox = useSelector((state: ApplicationState) => state.wines.wineBox)
+  const wineBox = useSelector((state: SelectorState) => state.wines.wineBox)
 
   const addWineToState = (newWine: Wines) => {
     const alreadyExists = wineBox.find(e => newWine.id === e.id)
@@ -22,11 +31,12 @@ const useWineBox = () => {
       alreadyExists.quantity += 1
       alreadyExists.wineBoxPrice += alreadyExists.wineBoxPrice
       const removedItem = wineBox.filter(e => e.id !== newWine.id)
-      return dispatch(AddMoreOneAction([...removedItem, alreadyExists]))
+      dispatch(AddMoreOneAction([...removedItem, alreadyExists]))
+      return
     }
     newWine.quantity = quantity
     newWine.wineBoxPrice = Number((newWine.priceMember * quantity).toFixed(2))
-    return dispatch(getWineBoxAction(newWine))
+    dispatch(getWineBoxAction(newWine))
   }
 
   const changeQuantity = (newQuantity, wine) => {
@@ -39,12 +49,13 @@ const useWineBox = () => {
     }
   }
 
-  const removeWineBox = id => {
-    if (!id) {
-      return dispatch(AddMoreOneAction([]))
+  const removeWineBox = (id: number) => {
+    if (id === -10) {
+      dispatch(AddMoreOneAction([]))
+      return
     }
     const removedItem = wineBox.filter(wine => wine.id !== id)
-    return dispatch(AddMoreOneAction(removedItem))
+    dispatch(AddMoreOneAction(removedItem))
   }
 
   const AddToCartWithQuantity = (wine: Wines, upOrDown: boolean) => {

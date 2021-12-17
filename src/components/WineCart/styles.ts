@@ -1,11 +1,35 @@
 import styled from 'styled-components'
+import { CgClose } from 'react-icons/cg'
 
-export const WineCartContainer = styled.section`
-  width: 100vw;
+interface CartContainer {
+  HeaderCart: boolean
+  isOpen?: boolean
+}
+
+export const WineCartContainer = styled.section<CartContainer>`
+  width: 100%;
+  display: ${props => (props.HeaderCart ? 'none' : 'block')};
+  position: relative;
   @media (min-width: 768px) {
-    max-width: 1210px;
-    margin: auto;
+    right: ${props => (props.isOpen ? '0' : '-500px')};
+    display: block;
+    width: 500px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: #f5f5f5;
+    box-shadow: ${props => (props.isOpen ? '2px 5px 10px #888;' : '0 0 0')};
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: ease-in-out 500ms;
   }
+`
+
+export const CloseBtn = styled(CgClose)<CartContainer>`
+  width: 25px;
+  cursor: pointer;
+  margin: 10px 0 0 10px;
+  display: ${props => (props.HeaderCart ? 'block' : 'none')};
 `
 
 export const WineBoxList = styled.div`
@@ -14,7 +38,7 @@ export const WineBoxList = styled.div`
   flex-direction: column;
 `
 export const Complement = styled.div`
-  width: 100;
+  width: 100%;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -59,14 +83,11 @@ export const CartInfo = styled.section`
   width: 100%;
   padding: 15px;
   border-bottom: 1px solid #888;
-  box-shadow: 0px 10px 10px #888;
+  box-shadow: 0px 5px 3px #888;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (min-width: 768px) {
-    box-shadow: 0 0 0;
-  }
 `
 
 export const TotalItens = styled.h4`

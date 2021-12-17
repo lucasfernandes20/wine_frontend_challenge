@@ -82,6 +82,7 @@ export const UserContent = styled.div`
   width: 50px;
   overflow: hidden;
   float: right;
+  cursor: pointer;
 `
 export const Div = styled.div`
   display: flex;

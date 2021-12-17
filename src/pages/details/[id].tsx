@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       Number(id) + 1
     }&limit=1`
   )
-  return { props: { data: res.data.items[0] }, revalidate: 3000000 }
+  return { props: { data: res.data.items[0] }, revalidate: 10 }
 }
 
 export default wineDetails

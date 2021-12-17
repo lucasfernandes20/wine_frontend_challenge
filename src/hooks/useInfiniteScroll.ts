@@ -6,8 +6,8 @@ import { Wines, FilterState } from '../Redux/ducks/Wines/types'
 interface InfiniteScrollProps {
   currentWines: Wines[]
   winesEnd: boolean
-  setPriceFilter: any
-  resetPage: any
+  setPriceFilter: (arg: string) => void
+  resetPage: () => void
 }
 
 interface ApplicationState {
@@ -21,6 +21,28 @@ const useInfiniteScroll = (wines: Wines[]): InfiniteScrollProps => {
   const [priceFilter, setPriceFilter] = useState('')
 
   const filter = useSelector((state: ApplicationState) => state.filter.filter)
+
+  const getWines = async () => {
+    const ENDPOINT = 'https://wine-back-test.herokuapp.com/products'
+    const result = await axios.get(ENDPOINT)
+    const { items } = result.data
+    if (items.length > 0) {
+      const newValues = priceFilter.split('-')
+      const filteredData = items.filter(
+        (wine: Wines) =>
+          wine.priceMember > Number(newValues[0]) &&
+          wine.priceMember < Number(newValues[1])
+      )
+      setWines(() => filteredData)
+    }
+    setEndOfArray(true)
+  }
+
+  useEffect(() => {
+    if (priceFilter !== '') {
+      getWines()
+    }
+  }, [priceFilter])
 
   const resetPage = () => {
     setPages(1)
@@ -44,7 +66,7 @@ const useInfiniteScroll = (wines: Wines[]): InfiniteScrollProps => {
       }
       return setEndOfArray(true)
     }
-    getWines()
+    if (priceFilter === '') getWines()
   }, [usePages])
 
   useEffect(() => {

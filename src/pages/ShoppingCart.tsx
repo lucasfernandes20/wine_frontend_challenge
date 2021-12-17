@@ -7,7 +7,7 @@ const ShoppingCart: React.FC = () => {
   return (
     <Container>
       <Header />
-      <WineCart />
+      <WineCart HeaderCart={false} />
     </Container>
   )
 }
