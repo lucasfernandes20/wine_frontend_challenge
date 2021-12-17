@@ -67,7 +67,7 @@ export const FilterBtn = styled.button`
 
 export const RadioInputContainer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
