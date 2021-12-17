@@ -43,9 +43,9 @@ const Header: React.FC = () => {
                 <Li On={pathname === '/'}>Loja</Li>
               </a>
             </Link>
-            <Link href="/ShoppingCart">
+            <Link href="/notImplemented">
               <a>
-                <Li On={pathname === '/ShoppingCart'}>Carrinho</Li>
+                <Li On={pathname === '/ShoppingCart'}>Produtores</Li>
               </a>
             </Link>
             <Link href="/notImplemented">
