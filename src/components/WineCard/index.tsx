@@ -5,12 +5,15 @@ import { Wines } from '../../Redux/ducks/Wines/types'
 import {
   CardContainer,
   Preview,
+  Flag,
+  ImageContainer,
   WineName,
   WinePrice,
   ToCartBtn,
   MemberPrice,
   NomMenberPrice,
-  P
+  P,
+  Discount
 } from './styles'
 
 const WineCard = ({ wine }: { wine: Wines }): JSX.Element => {
@@ -19,8 +22,15 @@ const WineCard = ({ wine }: { wine: Wines }): JSX.Element => {
     <CardContainer>
       <Link href={`/details/${wine.id}`}>
         <a>
-          <Preview src={wine.image} alt="wine" />
+          <ImageContainer>
+            <Flag src={wine.flag} alt="wine country flag" />
+            <Preview src={wine.image} alt="wine" />
+          </ImageContainer>
           <WineName>{wine.name}</WineName>
+          <Discount>
+            <p>{`R$ ${wine.price}`}</p>
+            <p>{`${wine.discount}% OFF`}</p>
+          </Discount>
           <MemberPrice>
             <P>SÓCIO WINE</P>
             <WinePrice>

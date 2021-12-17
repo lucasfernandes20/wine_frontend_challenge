@@ -11,8 +11,16 @@ export interface addWineBox {
   payload: Wines[]
 }
 
+export interface addFilter {
+  type: ActionTypes
+  payload: string
+}
+
 export const getWineBoxAction = (data: Wines): getWineBox =>
   action(ActionTypes.GET_WINE, data)
 
 export const AddMoreOneAction = (data: Wines[]): addWineBox =>
   action(ActionTypes.ADD_WINE, data)
+
+export const getFilterAction = (data: string): addFilter =>
+  action(ActionTypes.ADD_FILTER, data)

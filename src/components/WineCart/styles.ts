@@ -2,20 +2,28 @@ import styled from 'styled-components'
 
 export const WineCartContainer = styled.section`
   width: 100vw;
+  @media (min-width: 768px) {
+    max-width: 1210px;
+    margin: auto;
+  }
 `
 
 export const WineBoxList = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `
 export const Complement = styled.div`
-  width: 100vw;
+  width: 100;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 50px;
+  }
 `
 export const TotalValue = styled.div`
   width: 100%;
@@ -42,9 +50,13 @@ export const BuyBtn = styled.button`
   border-radius: 5px;
   color: white;
   background-color: #7ebc43;
+  @media (min-width: 768px) {
+    cursor: pointer;
+    width: 40%;
+  }
 `
 export const CartInfo = styled.section`
-  width: 100vw;
+  width: 100%;
   padding: 15px;
   border-bottom: 1px solid #888;
   box-shadow: 0px 10px 10px #888;
@@ -52,6 +64,9 @@ export const CartInfo = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (min-width: 768px) {
+    box-shadow: 0 0 0;
+  }
 `
 
 export const TotalItens = styled.h4`
@@ -73,4 +88,10 @@ export const ClearBtn = styled.button`
   font-weight: 800;
   border: none;
   border-radius: 5px;
+  @media (min-width: 768px) {
+    cursor: pointer;
+    width: 20%;
+    font-size: 14px;
+    padding: 10px;
+  }
 `

@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { wines } from '../Redux/ducks/Wines'
 import {
   getWineBoxAction,
   AddMoreOneAction
@@ -10,6 +12,7 @@ export interface ApplicationState {
 }
 
 const useWineBox = () => {
+  const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
   const wineBox = useSelector((state: ApplicationState) => state.wines.wineBox)
 
@@ -21,8 +24,8 @@ const useWineBox = () => {
       const removedItem = wineBox.filter(e => e.id !== newWine.id)
       return dispatch(AddMoreOneAction([...removedItem, alreadyExists]))
     }
-    newWine.quantity = 1
-    newWine.wineBoxPrice = newWine.priceMember
+    newWine.quantity = quantity
+    newWine.wineBoxPrice = Number((newWine.priceMember * quantity).toFixed(2))
     return dispatch(getWineBoxAction(newWine))
   }
 
@@ -44,10 +47,19 @@ const useWineBox = () => {
     return dispatch(AddMoreOneAction(removedItem))
   }
 
+  const AddToCartWithQuantity = (wine: Wines, upOrDown: boolean) => {
+    const MORE_OR_LESS = upOrDown ? 1 : -1
+    setQuantity(prevQuantity =>
+      prevQuantity + MORE_OR_LESS < 0 ? 0 : prevQuantity + MORE_OR_LESS
+    )
+  }
+
   return {
     addWineToState,
     changeQuantity,
     removeWineBox,
+    AddToCartWithQuantity,
+    quantity,
     wineBox
   }
 }

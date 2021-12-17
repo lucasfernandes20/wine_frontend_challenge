@@ -40,9 +40,17 @@ const SideBar: React.FC<SideBarProps> = ({ open, closeSideBar }) => {
       <Nav>
         <MenuList>
           <MenuItem>
-            <Link href="/not_implemented">
+            <Link href="/notImplemented">
               <a onClick={() => closeSideBar(false)}>
                 Assinar a Wine
+                <IoDiamondOutline style={{ marginLeft: '10px' }} />
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/notImplemented">
+              <a onClick={() => closeSideBar(false)}>
+                Ofertas
                 <IoDiamondOutline style={{ marginLeft: '10px' }} />
               </a>
             </Link>

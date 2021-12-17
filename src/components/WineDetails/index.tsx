@@ -8,19 +8,36 @@ import {
   Description,
   Comment,
   ToCartContainer,
-  Prices
+  Prices,
+  BackIcon,
+  Preview,
+  WineInfos,
+  SommelierComment,
+  WinePrice,
+  AddCartContainer,
+  BackBtn,
+  AddtoCart
 } from './styles'
 import { BsChevronRight } from 'react-icons/bs'
 import useWineBox from '../../hooks/useWineBox'
+import Link from 'next/link'
 
 interface WineDetailsProps {
   wine: Wines
 }
 
 const WineDetails: React.FC<WineDetailsProps> = ({ wine }) => {
-  const { addWineToState } = useWineBox()
+  const { addWineToState, AddToCartWithQuantity, quantity } = useWineBox()
   return (
     <DetailContainer>
+      <BackBtn>
+        <Link href="/">
+          <a>
+            <BackIcon />
+            <p>Voltar</p>
+          </a>
+        </Link>
+      </BackBtn>
       <Apresentation>
         <Local>
           <p>Vinho</p>
@@ -37,8 +54,40 @@ const WineDetails: React.FC<WineDetailsProps> = ({ wine }) => {
           <p>{wine.classification}</p>
           <p>{wine.size}</p>
         </Tags>
-        <img src={wine.image} alt="wine" />
+        <WineInfos>
+          <SommelierComment>
+            <WinePrice>
+              <p>
+                R$ <span>{wine.priceMember}</span>
+              </p>
+              <p>{`NÃO-SÓCIO R$ ${wine.priceNonMember}/UN.`}</p>
+            </WinePrice>
+            <h2>Descrição</h2>
+            <Comment>{wine.sommelierComment}</Comment>
+            <AddCartContainer>
+              <button
+                className="quantity-btn"
+                type="button"
+                onClick={() => AddToCartWithQuantity(wine, true)}
+              >
+                +
+              </button>
+              <p>{quantity}</p>
+              <button
+                className="quantity-btn"
+                type="button"
+                onClick={() => AddToCartWithQuantity(wine, false)}
+              >
+                -
+              </button>
+              <AddtoCart type="button" onClick={() => addWineToState(wine)}>
+                Adicionar
+              </AddtoCart>
+            </AddCartContainer>
+          </SommelierComment>
+        </WineInfos>
       </Apresentation>
+      <Preview src={wine.image} alt="wine" />
       <Description>
         <h2>Descrição</h2>
         <Comment>{wine.sommelierComment}</Comment>
@@ -51,9 +100,9 @@ const WineDetails: React.FC<WineDetailsProps> = ({ wine }) => {
             </p>
             <p>{`PREÇO NÃO-SÓCIO R$ ${wine.priceNonMember}`}</p>
           </Prices>
-          <button type="button" onClick={() => addWineToState(wine)}>
+          <AddtoCart type="button" onClick={() => addWineToState(wine)}>
             Adicionar
-          </button>
+          </AddtoCart>
         </ToCartContainer>
       </Description>
     </DetailContainer>

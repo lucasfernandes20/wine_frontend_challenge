@@ -1,11 +1,11 @@
 import { Reducer } from 'redux'
-import { WinesState, ActionTypes } from './types'
+import { WinesState, ActionTypes, FilterState } from './types'
 
 const INITIAL_STATE: WinesState = {
   wineBox: []
 }
 
-const reducer: Reducer<WinesState> = (state = INITIAL_STATE, action) => {
+export const wines: Reducer<WinesState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ActionTypes.GET_WINE:
       return {
@@ -22,4 +22,21 @@ const reducer: Reducer<WinesState> = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default reducer
+const INITIAL_FILTER: FilterState = {
+  filter: ''
+}
+
+export const filter: Reducer<FilterState> = (
+  state = INITIAL_FILTER,
+  action
+) => {
+  switch (action.type) {
+    case ActionTypes.ADD_FILTER:
+      return {
+        ...state,
+        filter: action.payload
+      }
+    default:
+      return state
+  }
+}

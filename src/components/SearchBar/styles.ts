@@ -28,5 +28,11 @@ export const SearchBarContainer = styled.div`
     height: 40px;
     color: #c81b79;
     border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    max-width: 500px;
+    right: 100px;
+    left: auto;
   }
 `

@@ -2,7 +2,8 @@
 
 export enum ActionTypes {
   GET_WINE = '@wines/GET_WINE',
-  ADD_WINE = '@wines/ADD_WINE'
+  ADD_WINE = '@wines/ADD_WINE',
+  ADD_FILTER = '@filter/ADD_FILTER'
 }
 
 // DATA TYPES
@@ -28,8 +29,13 @@ export interface Wines {
   wineBoxPrice?: number
 }
 
-// STATE TYPES
+// WINE STATE TYPES
 
 export interface WinesState {
   readonly wineBox: Wines[]
+}
+// FILTER STATE TYPES
+
+export interface FilterState {
+  readonly filter: string
 }

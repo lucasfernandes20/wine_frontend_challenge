@@ -7,6 +7,10 @@ export const WineBoxCardContainer = styled.section`
   display: flex;
   align-items: center;
   border-bottom: 1px solid #8888;
+  @media (min-width: 768px) {
+    max-width: 1210px;
+    margin: auto;
+  }
 `
 
 export const Div = styled.div`
@@ -14,6 +18,11 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  svg {
+    @media (min-width: 768px) {
+      cursor: pointer;
+    }
+  }
 `
 export const WineName = styled.h3`
   width: 70%;
@@ -75,6 +84,9 @@ export const Quantity = styled.div`
     color: black;
     border: none;
     border-radius: 5px;
+    @media (min-width: 768px) {
+      cursor: pointer;
+    }
   }
   p {
     width: 30px;

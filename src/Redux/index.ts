@@ -12,7 +12,7 @@ export interface ApplicationState {
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['wines']
+  blacklist: ['filter']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
