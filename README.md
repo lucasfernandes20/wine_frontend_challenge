@@ -1,4 +1,4 @@
-# WINE FRONTEND CHAALLENGER
+# WINE FRONTEND CHALLENGE
 
 Projeto relizado para desfio do processo seletivo da Wine.com.br.
 
