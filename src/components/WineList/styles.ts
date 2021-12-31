@@ -1,56 +1,4 @@
 import styled from 'styled-components'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-
-interface CloseIcon {
-  active: string
-}
-
-interface FilterBlock {
-  filterOpen: boolean
-}
-
-export const CloseIcon = styled(AiOutlineCloseCircle)<CloseIcon>`
-  width: 30px;
-  color: ${props => (props.active === 'true' ? '#555' : 'lightgray')};
-`
-
-export const RemoveFilterContainer = styled.div<CloseIcon>`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  p {
-    font-size: 12px;
-    color: ${props => (props.active === 'true' ? '#555' : 'lightgray')};
-  }
-`
-
-export const FilterContainer = styled.section<FilterBlock>`
-  width: 100vw;
-  height: ${props => (props.filterOpen ? '300px' : '0px')};
-  opacity: ${props => (props.filterOpen ? '1' : '0')};
-  transition: ease-in 300ms;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  @media (min-width: 768px) {
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    width: 40%;
-    height: 600px;
-    margin-top: 30px;
-    padding: 10px;
-    h1 {
-      font-size: 23px;
-    }
-  }
-  @media (min-width: 1210px) {
-    width: 25%;
-  }
-`
 
 export const FilterBtn = styled.button`
   display: block;
@@ -65,30 +13,26 @@ export const FilterBtn = styled.button`
   }
 `
 
-export const RadioInputContainer = styled.div`
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  label {
-    font-size: 14px;
-    color: #555;
-    input {
-      margin-right: 15px;
-      cursor: pointer;
-    }
-  }
-`
-
 export const ListContainer = styled.section`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   @media (min-width: 768px) {
+    align-items: flex-start;
     flex-direction: row;
+  }
+`
+
+export const WinePageContainer = styled.section`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  flex-direction: column;
+  gap: 20px;
+  @media (min-width: 768px) {
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     max-width: 1210px;
@@ -106,7 +50,6 @@ export const List = styled.div`
   margin-top: 30px;
   @media (min-width: 768px) {
     width: 60%;
-    padding: 10px;
   }
   @media (min-width: 1210px) {
     width: 75%;

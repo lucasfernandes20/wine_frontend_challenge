@@ -8,6 +8,7 @@ interface InfiniteScrollProps {
   winesEnd: boolean
   setPriceFilter: (arg: string) => void
   resetPage: () => void
+  priceFilter: string
 }
 
 interface ApplicationState {
@@ -87,7 +88,7 @@ const useInfiniteScroll = (wines: Wines[]): InfiniteScrollProps => {
 
     intersection.observe(document.getElementById('sentinela'))
   }, [])
-  return { currentWines, winesEnd, setPriceFilter, resetPage }
+  return { currentWines, winesEnd, setPriceFilter, resetPage, priceFilter }
 }
 
 export default useInfiniteScroll

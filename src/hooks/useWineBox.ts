@@ -25,13 +25,17 @@ const useWineBox = (): ApplicationState => {
   const dispatch = useDispatch()
   const wineBox = useSelector((state: SelectorState) => state.wines.wineBox)
 
+  const dispatchWine = (currentWine: Wines, newWine: Wines) => {
+    currentWine.quantity += 1
+    currentWine.wineBoxPrice += currentWine.wineBoxPrice
+    const removedItem = wineBox.filter(e => e.id !== newWine.id)
+    dispatch(AddMoreOneAction([...removedItem, currentWine]))
+  }
+
   const addWineToState = (newWine: Wines) => {
     const alreadyExists = wineBox.find(e => newWine.id === e.id)
     if (alreadyExists) {
-      alreadyExists.quantity += 1
-      alreadyExists.wineBoxPrice += alreadyExists.wineBoxPrice
-      const removedItem = wineBox.filter(e => e.id !== newWine.id)
-      dispatch(AddMoreOneAction([...removedItem, alreadyExists]))
+      dispatchWine(alreadyExists, newWine)
       return
     }
     newWine.quantity = quantity
@@ -39,7 +43,7 @@ const useWineBox = (): ApplicationState => {
     dispatch(getWineBoxAction(newWine))
   }
 
-  const changeQuantity = (newQuantity, wine) => {
+  const changeQuantity = (newQuantity: number, wine: Wines) => {
     if (newQuantity >= 0 && newQuantity <= 999) {
       const removedItem = wineBox.filter(e => e.id !== wine.id)
       wine.quantity = newQuantity
