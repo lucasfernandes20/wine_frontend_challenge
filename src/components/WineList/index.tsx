@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useInfiniteScroll from '../../hooks/useInfiniteScroll'
 import { Wines } from '../../Redux/ducks/Wines/types'
 import CarouselBanner from '../Carousel'
+import WarningAddToCart from '../WarningAddToCart'
 import WineCard from '../WineCard'
 import WineRadioFilters from '../WineRadioFilters'
 import {
@@ -43,6 +44,7 @@ const WineList = ({ wines }: { wines: Wines[] }): JSX.Element => {
           </ListInfo>
         </List>
       </ListContainer>
+      <WarningAddToCart />
     </WinePageContainer>
   )
 }

@@ -21,6 +21,7 @@ import {
 import { BsChevronRight } from 'react-icons/bs'
 import useWineBox from '../../hooks/useWineBox'
 import Link from 'next/link'
+import WarningAddToCart from '../WarningAddToCart'
 
 interface WineDetailsProps {
   wine: Wines
@@ -105,6 +106,7 @@ const WineDetails: React.FC<WineDetailsProps> = ({ wine }) => {
           </AddtoCart>
         </ToCartContainer>
       </Description>
+      <WarningAddToCart />
     </DetailContainer>
   )
 }

@@ -10,7 +10,7 @@ export const WineCartContainer = styled.section<CartContainer>`
   width: 100%;
   display: ${props => (props.HeaderCart ? 'none' : 'block')};
   position: relative;
-  z-index: 100000000;
+  z-index: 10000;
   @media (min-width: 768px) {
     right: ${props => (props.isOpen ? '0' : '-500px')};
     display: block;

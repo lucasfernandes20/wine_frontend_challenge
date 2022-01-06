@@ -8,19 +8,27 @@ import {
   MenuHamburguer,
   Nav,
   SearchIcon,
-  Li
+  Li,
+  WineBoxQuantity
 } from './styles'
 import SideBar from '../SideBar'
 import SearchBar from '../SearchBar'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import WineCart from '../WineCart'
+import { useSelector } from 'react-redux'
+import { WinesState } from '../../Redux/ducks/Wines/types'
+
+interface SelectorState {
+  wines: WinesState
+}
 
 const Header: React.FC = () => {
   const [useSideBar, setSideBar] = useState(false)
   const [useSearchBar, setSearchBar] = useState(false)
   const [useSideCart, setSideCart] = useState(false)
   const { pathname } = useRouter()
+  const wineBox = useSelector((state: SelectorState) => state.wines.wineBox)
   return (
     <HeaderContainer searchBar={useSearchBar}>
       <SideBar open={useSideBar} closeSideBar={setSideBar} />
@@ -64,11 +72,9 @@ const Header: React.FC = () => {
       <Div>
         <SearchIcon onClick={() => setSearchBar(!useSearchBar)} />
         {useSearchBar && <SearchBar />}
-        <UserContent>
-          <UserImg
-            src="https://img.wine.com.br/fenix/image/_big_bang/icons/header-sprite.svg"
-            onClick={() => setSideCart(true)}
-          />
+        <UserContent onClick={() => setSideCart(true)}>
+          <WineBoxQuantity>{wineBox.length}</WineBoxQuantity>
+          <UserImg src="https://img.wine.com.br/fenix/image/_big_bang/icons/header-sprite.svg" />
         </UserContent>
         <WineCart
           HeaderCart={true}

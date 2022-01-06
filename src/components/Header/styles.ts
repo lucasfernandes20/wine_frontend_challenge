@@ -78,6 +78,7 @@ export const UserImg = styled.img`
 `
 
 export const UserContent = styled.div`
+  position: relative;
   height: 60px;
   width: 50px;
   overflow: hidden;
@@ -88,4 +89,20 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+`
+export const WineBoxQuantity = styled.p`
+  background-color: #7ebc43;
+  position: absolute;
+  z-index: 10;
+  padding: 5px;
+  border-radius: 50%;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-weight: 800;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
