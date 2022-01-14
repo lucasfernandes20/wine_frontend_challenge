@@ -95,6 +95,8 @@ export const WineBoxQuantity = styled.p`
   position: absolute;
   z-index: 10;
   padding: 5px;
+  border: 3px solid #fff;
+  padding: 12px;
   border-radius: 50%;
   bottom: 0;
   right: 0;

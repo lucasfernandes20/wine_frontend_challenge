@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const WineBoxCardContainer = styled.section`
-  width: 100vw;
+  width: 100%;
   padding-right: 15px;
   height: 130px;
   display: flex;

@@ -16,8 +16,8 @@ const useWarning = (): ApplicationState => {
   const wineBox = useSelector((state: SelectorState) => state.wines.wineBox)
 
   useEffect(() => {
-    if (!loading) {
-      setWarning(prevState => [...prevState, 'Produto adicionado ao Carrinho'])
+    if (!loading && wineBox.length !== 0) {
+      setWarning(prevState => [...prevState, wineBox[wineBox.length - 1].name])
 
       setTimeout(() => {
         setWarning(prevState => prevState.splice(0, 0))
